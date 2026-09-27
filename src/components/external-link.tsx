@@ -4,6 +4,7 @@ import { type ComponentProps } from 'react';
 
 type Props = Omit<ComponentProps<typeof Link>, 'href'> & { href: Href & string };
 
+// Open external pages in the device browser while keeping normal web links.
 export function ExternalLink({ href, ...rest }: Props) {
   return (
     <Link

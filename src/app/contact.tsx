@@ -1,4 +1,4 @@
-import { ScreenHeader } from '@/components/ScreenHeader';
+import ScreenHeader from '@/components/ScreenHeader';
 import { useState } from 'react';
 import { Alert, ScrollView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -13,7 +13,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
  * 
  * WHY WE DID IT:
  * - `useState` maintains a single source of truth for input fields in React Native.
- * - Controlled components ensure form state is clean, validated, and ready for future API integration or backend messaging services.
+ * - Controlled components ensure form state is clean.
  */
 
 const CONTACT_INFO = [
@@ -37,12 +37,12 @@ export default function ContactScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="light-content" backgroundColor="#2D3B2A" />
-      <ScreenHeader />
+      <ScreenHeader title="Contact Pawsitive Academy" />
 
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.section}>
           <Text style={styles.title}>Get In Touch</Text>
-          <Text style={styles.subtitle}>Have questions or ready to enroll? We'd love to hear from you!</Text>
+          <Text style={styles.subtitle}>Have questions or ready to enroll? We&apos;d love to hear from you!</Text>
 
           {/* Form */}
           <View style={styles.formCard}>

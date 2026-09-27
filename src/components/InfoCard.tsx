@@ -7,6 +7,7 @@ interface CardProps {
   width?: `${number}%` | number;
 }
 
+// A small shared card keeps feature and value sections consistent.
 export function InfoCard({ icon, title, body, width = '100%' }: CardProps) {
   return (
     <View style={[styles.card, { width }]}>

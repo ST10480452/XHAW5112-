@@ -9,6 +9,7 @@ import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
 export function Collapsible({ children, title }: PropsWithChildren & { title: string }) {
+  // This state controls whether the extra content is visible.
   const [isOpen, setIsOpen] = useState(false);
   const theme = useTheme();
 

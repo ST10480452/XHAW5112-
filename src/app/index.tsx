@@ -1,5 +1,5 @@
 import { InfoCard } from '@/components/InfoCard';
-import { ScreenHeader } from '@/components/ScreenHeader';
+import ScreenHeader from '@/components/ScreenHeader';
 import { useRouter } from 'expo-router';
 import { Image, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -14,28 +14,28 @@ import { SafeAreaView } from 'react-native-safe-area-context';
  * 
  * WHY WE DID IT:
  * - `SafeAreaView` ensures UI elements aren't blocked by device camera cutouts, notches, or home indicator bars.
- * - `.map()` keeps the JSX clean and scalable—new features can be added by updating a data array rather than rewriting UI elements.
  * - Establishes instant visual hierarchy so first-time visitors understand what Pawsitive Pet Academy offers immediately.
  */
 
 const FEATURES = [
-  { icon: '🐾', title: 'Positive Reinforcement', body: 'Science-backed techniques that build lasting trust without force or fear.' },
-  { icon: '🎓', title: 'Certified Instructors', body: 'Pretoria’s most experienced behavioral specialists dedicated to your success.' },
-  { icon: '🏡', title: 'Real-World Skills', body: 'Practical lessons designed to make everyday life with your dog enjoyable.' },
+  { icon: '', title: 'Positive Reinforcement', body: 'Science-backed techniques that build lasting trust without force or fear.' },
+  { icon: '', title: 'Certified Instructors', body: 'Pretoria’s most experienced behavioral specialists dedicated to your success.' },
+  { icon: '', title: 'Real-World Skills', body: 'Practical lessons designed to make everyday life with your dog enjoyable.' },
 ];
 
 export default function HomeScreen() {
+  // The router sends each home-page button to its matching screen.
   const router = useRouter();
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="light-content" backgroundColor="#2D3B2A" />
-      <ScreenHeader showBack={false} />
+      <ScreenHeader title="Pawsitive Academy" />
 
       <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
         {/* Hero Section */}
         <View style={styles.heroSection}>
-          <Text style={styles.badge}>PRETORIA'S PREMIER DOG ACADEMY</Text>
+          <Text style={styles.badge}>PRETORIA’S PREMIER DOG ACADEMY</Text>
           <Text style={styles.heroTitle}>Pawsitive Pet Academy</Text>
           <Text style={styles.heroSubtitle}>Transforming relationships through reward-based training.</Text>
           
@@ -56,17 +56,21 @@ export default function HomeScreen() {
             <TouchableOpacity 
               style={styles.secondaryButton} 
               activeOpacity={0.8} 
-              onPress={() => router.push('/about')}
+              onPress={() => router.push('/courses')}
             >
               <Text style={styles.secondaryButtonText}>OUR CLASSES</Text>
             </TouchableOpacity>
           </View>
 
           {/* Hero Banner Image */}
-          <Image 
-            source={{ uri: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?q=80&w=800&auto=format&fit=crop' }} 
-            style={styles.heroImage} 
-          />
+          <View style={styles.heroImageFrame}>
+            <Image
+              source={{ uri: 'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1600&q=85' }}
+              style={styles.heroImage}
+              resizeMode="cover"
+              accessibilityLabel="Golden retriever outdoors"
+            />
+          </View>
         </View>
 
         <View style={styles.divider} />
@@ -185,10 +189,15 @@ const styles = StyleSheet.create({
     fontSize: 12,
     letterSpacing: 0.5,
   },
-  heroImage: {
+  heroImageFrame: {
     width: '100%',
     height: 220,
     borderRadius: 14,
+    overflow: 'hidden',
+  },
+  heroImage: {
+    width: '100%',
+    height: '100%',
   },
   divider: {
     height: 1,

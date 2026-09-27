@@ -1,5 +1,5 @@
 import { InfoCard } from '@/components/InfoCard';
-import { ScreenHeader } from '@/components/ScreenHeader';
+import ScreenHeader from '@/components/ScreenHeader';
 import { Image, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -17,9 +17,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
  */
 
 const TRAINERS = [
-  { name: 'Sarah van der Merwe', role: 'Lead Behavioral Trainer', bio: '12+ years in positive reinforcement behavior modification.', img: '', tags: ['CPDT-KA', 'Behavior'] },
-  { name: 'John Smith', role: 'Agility & Obedience Coach', bio: 'Specializing in high-energy breeds and foundation obedience.', img: '', tags: ['Agility', 'Obedience'] },
-  { name: 'Leslie Sello', role: 'Puppy & Socialization Spec.', bio: 'Setting puppies up for success early through confidence building.', img: '', tags: ['Puppy', 'Early Dev'] },
+  { name: 'Sarah van der Merwe', role: 'Lead Behavioral Trainer', bio: '12+ years in positive reinforcement behavior modification.', img: require('../../assets/images/business.jpg'), tags: ['CPDT-KA', 'Behavior'] },
+  { name: 'John Smith', role: 'Agility & Obedience Coach', bio: 'Specializing in high-energy breeds and foundation obedience.', img: require('../../assets/images/gardner.jpg'), tags: ['Agility', 'Obedience'] },
+  { name: 'Leslie Sello', role: 'Puppy & Socialization Spec.', bio: 'Setting puppies up for success early through confidence building.', img: require('../../assets/images/vet.jpg'), tags: ['Puppy', 'Early Dev'] },
 ];
 
 const VALUES = [
@@ -33,7 +33,7 @@ export default function AboutScreen() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="light-content" backgroundColor="#2D3B2A" />
-      <ScreenHeader />
+      <ScreenHeader title="About Pawsitive Academy" />
 
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.section}>
@@ -53,7 +53,7 @@ export default function AboutScreen() {
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 12, paddingVertical: 12 }}>
             {TRAINERS.map((t, idx) => (
               <View key={idx} style={styles.trainerCard}>
-                <Image source={{ uri: t.img }} style={styles.avatar} />
+                <Image source={t.img} style={styles.avatar} />
                 <Text style={styles.trainerName}>{t.name}</Text>
                 <Text style={styles.trainerRole}>{t.role}</Text>
                 <Text style={styles.trainerBio}>{t.bio}</Text>
