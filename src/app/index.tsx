@@ -99,7 +99,7 @@ export default function HomeScreen() {
           <TouchableOpacity 
             style={styles.ctaButton} 
             activeOpacity={0.8} 
-            onPress={() => router.push('/contact')}
+            onPress={() => router.push('/book-assessment')}
           >
             <Text style={styles.ctaButtonText}>BOOK A SESSION</Text>
           </TouchableOpacity>
